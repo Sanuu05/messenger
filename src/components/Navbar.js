@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import logo from './img/logo.png'
 function Navbar() {
     return (
         <div className="navs">
             <nav style={{
                 }}>
                 <div class="nav-wrapper #252446  darken-3 white-text text-darken-2" >
-                    <Link to="/" class="brand-logo left"><img src="https://www.aurigait.com/resources/files/2017/01/256-256-c8b6cbadb620f8b3f588bf53464c8ab9.png" alt="pic" style={{
+                    <Link to="/" class="brand-logo left"><img src={logo} alt="pic" style={{
                         width:"50px"
                     }} /></Link>
                     <ul id="nav-mobile white-text text-darken-2" class="right">

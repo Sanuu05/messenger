@@ -5,7 +5,7 @@ import {ADD_ITEMS, AUTH_ERROR, DELETE_ITEMS, GET_ERROR, GET_ITEMS, ITEMS_LOADING
 export const getallitems = ()=> async(dispatch)=>{
     try {
         dispatch({ type: ITEMS_LOADING });
-        const itemData = await Axios.get("https://messengerm.herokuapp.com/item/all")
+        const itemData = await Axios.get("https://msg-snya.onrender.com/item/all")
         dispatch({type:GET_ITEMS, payload:itemData})
     } catch (error) {
         dispatch({type:AUTH_ERROR})
@@ -15,7 +15,7 @@ export const getitem = ()=> async(dispatch)=>{
     try {
         dispatch({ type: ITEMS_LOADING });
         const token = localStorage.getItem('token')
-        const itemData = await Axios.get("https://messengerm.herokuapp.com/item/get", { headers: { "x-auth-token": token } })
+        const itemData = await Axios.get("https://msg-snya.onrender.com/item/get", { headers: { "x-auth-token": token } })
         dispatch({type:GET_ITEMS, payload:itemData})
     } catch (error) {
         dispatch({type:AUTH_ERROR})
@@ -25,7 +25,7 @@ export const getfollowingitem = ()=> async(dispatch)=>{
     try {
         dispatch({ type: ITEMS_LOADING });
         const token = localStorage.getItem('token')
-        const itemData = await Axios.get("https://messengerm.herokuapp.com/item/allfollowing", { headers: { "x-auth-token": token } })
+        const itemData = await Axios.get("https://msg-snya.onrender.com/item/allfollowing", { headers: { "x-auth-token": token } })
         dispatch({type:GET_ITEMS, payload:itemData})
     } catch (error) {
         dispatch({type:AUTH_ERROR})
@@ -37,7 +37,7 @@ export const additem = (data)=>async(dispatch)=>{
         
         const token = localStorage.getItem('token')
         console.log(data)
-        const addData = await Axios.post("https://messengerm.herokuapp.com/item/post",data ,{ headers: { "x-auth-token": token } })
+        const addData = await Axios.post("https://msg-snya.onrender.com/item/post",data ,{ headers: { "x-auth-token": token } })
         dispatch({type:ADD_ITEMS, payload:addData})
     } catch (error) {
         dispatch({type:GET_ERROR, payload: error.response})

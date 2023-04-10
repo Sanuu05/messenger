@@ -16,7 +16,7 @@ function Chatbox({ userid }) {
     const [sentmsg, setsentmsg] = useState()
     const profilepic = (e) => {
         setpic(e.target.files[0])
-        console.log('cvcvcv',e.target.files[0])
+        console.log('cvcvcv', e.target.files[0])
         const render = new FileReader()
         render.onload = () => {
             if (render.readyState === 2) {
@@ -27,9 +27,9 @@ function Chatbox({ userid }) {
         render.readAsDataURL(e.target.files[0])
     }
     const user = localStorage.getItem("user")
-     
+
     const muser = JSON.parse(user)
-    console.log("useaaar",muser)
+    console.log("useaaar", muser)
     useEffect(() => {
         const pusher = new Pusher('dd6db006f4dad11b7fe7', {
             cluster: 'ap2'
@@ -47,7 +47,7 @@ function Chatbox({ userid }) {
     }, [userid, postmsg, dispatch, sentmsg])
     const [msgres, setmsgres] = useState()
     const [pic, setpic] = useState()
-    console.log("pk",msg)
+    console.log("pk", msg)
 
     const sender = localStorage.getItem('senduser_n')
 
@@ -76,22 +76,22 @@ function Chatbox({ userid }) {
         }
 
     }
-    const cancel=()=>{
+    const cancel = () => {
         setdisplayimg('')
         setpic(null)
     }
-    const mainuser=JSON.parse(sender)
-    console.log("sender",mainuser)
+    const mainuser = JSON.parse(sender)
+    console.log("sender", msg)
 
 
 
     return (
         <div className="chatbox">
             <nav >
-                <div class="nav-wrapper" style={{backgroundColor:'#5D5B8D'}}>
-                    <p class="brand-logo left "><img alt="pic" data-bs-toggle="modal" data-bs-target="#exampleModal1" src={mainuser?mainuser.pic?mainuser.pic:"https://britz.mcmaster.ca/images/nouserimage.gif/image":null} className="avatar ml-2 mr-2" /><span style={{fontSize:'12px'}}>{mainuser?.online?<span style={{color:"greenyellow",fontWeight:'bold'}}>online</span>:"offline"}</span></p>
+                <div class="nav-wrapper" style={{ backgroundColor: '#5D5B8D' }}>
+                    <p class="brand-logo left "><img alt="pic" data-bs-toggle="modal" data-bs-target="#exampleModal1" src={mainuser ? mainuser.pic ? mainuser.pic : "https://britz.mcmaster.ca/images/nouserimage.gif/image" : null} className="avatar ml-2 mr-2" /><span style={{ fontSize: '12px' }}>{mainuser?.online ? <span style={{ color: "greenyellow", fontWeight: 'bold' }}>online</span> : "offline"}</span></p>
                     <ul id="nav-mobile" class="right ">
-                        <li className="usern" style={{color:'white',textDecoration:'none'}}><NavLink to={`/home/${userid}`} style={{color:'white',textDecoration:'none'}} >{mainuser?.name}</NavLink></li>
+                        <li className="usern" style={{ color: 'white', textDecoration: 'none' }}><NavLink to={`/home/${userid}`} style={{ color: 'white', textDecoration: 'none' }} >{mainuser?.name}</NavLink></li>
                         {/* <li className="logoutl" ><a className="logout" href="/"  onClick={() => dispatch(logout())}>Logout</a></li> */}
 
 
@@ -104,14 +104,14 @@ function Chatbox({ userid }) {
             <div >
                 <ScrollToBottom className=" chats">
 
-                    {msg? msg ?
-                        msg?.map((val, index) => {
+                    {msg ? msg ?
+                        msg?.msg?.map((val, index) => {
                             return <>{
                                 val.text || val.pic ? <p className={val.sent === true || val.grpuser === muser._id ? " xx senduser1 shadow my-2" : "shadow senduser2 my-2"} onDoubleClick={() => dispatch(delmsg(val._id))}>
 
 
                                     {val.pic ?
-                                        <p > <img src={val.pic} alt="pic" className="textimg" /></p> : null
+                                        <img src={val.pic} alt="pic" className="textimg" /> : null
                                     }
                                     {
                                         val.text ? <p className={val.sent === true ? "xx senduser shadow  pp my-2" : "shadow pp  m-1 my-2"}> {val.text}</p> : null
@@ -120,43 +120,35 @@ function Chatbox({ userid }) {
                                 </p> : null
                             }
                             </>
-                        }) : null:null
+                        }) : null : null
                     }
 
                 </ScrollToBottom>
             </div>
             <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        {/* <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> */}
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div className="row">
-            <div className="col-12 col-md-4 leftm">
-            <img alt="pic" data-bs-toggle="modal" data-bs-target="#exampleModal" src={mainuser? mainuser.pic?mainuser.pic:"https://britz.mcmaster.ca/images/nouserimage.gif/image":null} className="img-fluid" />
-                {/* <button  >Edit Profile</button>
-                <label for="edit" className="shadow">Update Profile</label>
-                <input type="file" id="edit"  onChange={(e)=>setpropic(e.target.files[0])}/>
-                {
-                    propic?<button onClick={updatepic}>Update</button>:null
-                } */}
-            </div>
-            <div className="col-12 col-md-8">
-                <h4>Name:<span>{mainuser?mainuser.name:null}</span></h4>
-                <h4>Email:<span>{mainuser? mainuser.email:null}</span></h4>
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            {/* <h5 class="modal-title" id="exampleModalLabel">Modal title</h5> */}
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div className="row">
+                                <div className="col-12 col-md-4 leftm">
+                                    <img alt="pic" data-bs-toggle="modal" data-bs-target="#exampleModal" src={mainuser ? mainuser.pic ? mainuser.pic : "https://britz.mcmaster.ca/images/nouserimage.gif/image" : null} className="img-fluid" />
+                                    
+                                </div>
+                                <div className="col-12 col-md-8">
+                                    <h4>Name:<span>{mainuser ? mainuser.name : null}</span></h4>
+                                    <h4>Email:<span>{mainuser ? mainuser.email : null}</span></h4>
 
+                                </div>
+                            </div>
+                        </div>
+                
+                    </div>
+                </div>
             </div>
-        </div>
-      </div>
-      {/* <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div> */}
-    </div>
-  </div>
-</div>
             <div className="msg_input">
                 <form onSubmit={submit}><div className="forminput">
                     <input for="fileclk" type="text" placeholder="type your message" value={msgres} onChange={(e) => setmsgres(e.target.value)} />

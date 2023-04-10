@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { editprofilepic, getalluser, logout,loadUser } from '../action/user'
 import { NavLink } from 'react-router-dom'
+import logo from './img/logo.png'
 import Pusher from 'pusher-js'
 function Username() {
     const dispatch = useDispatch()
@@ -36,17 +37,18 @@ function Username() {
 
         });
     }, [])
-    useEffect(() => {
-        dispatch(getalluser())
-        dispatch(loadUser())
-        
-    }, [dispatch, username,picsucc,sentmsg])
+   
     const user = useSelector((state => state.all.alluser))
     const mainuser = useSelector((state => state.user.user.user))
     const alluser = useSelector((state => state.user?.user?.alluser))
-    const [muser,setmuser] = useState(alluser)
+    const [muser,setmuser] = useState()
     // const picsucc = useSelector((state => state.post.updatepic))
-    console.log("mm",alluser)
+    useEffect(() => {
+        dispatch(getalluser())
+        dispatch(loadUser())
+        setmuser(alluser)
+        
+    }, [dispatch, username,picsucc,sentmsg,alluser?.length])
     const tok = localStorage.getItem("user")
     const token = JSON.parse(tok)
     // console.log("ll1",token) 
@@ -82,7 +84,7 @@ function Username() {
             <div className="upper mb-2">
                 <div className="top_username d-flex justify-content-between pt-3 align-content-center">
                     <div className="top_left  ">
-                        <img className="malogo" src="https://www.aurigait.com/resources/files/2017/01/256-256-c8b6cbadb620f8b3f588bf53464c8ab9.png" alt="pic" style={{
+                        <img className="malogo" src={logo} alt="pic" style={{
                         width:"40px"
                     }} />
                         <img alt="pic" data-bs-toggle="modal" data-bs-target="#exampleModal" src={mainuser?mainuser.profilePic?mainuser.profilePic:"https://britz.mcmaster.ca/images/nouserimage.gif/image":null} className="avatar ml-2 mr-2" />
@@ -98,7 +100,7 @@ function Username() {
                 </div>
 
             </div>
-            <div className='slt' style={{display:'flex',justifyContent:'space-evenly',flexDirection:'row',marginBottom:50}}>
+            <div className='slt' style={{display:'flex',justifyContent:'space-evenly',flexDirection:'row',marginBottom:20}}>
                 <button style={{width:'40%'}} className={slt==="chat"?"active":null} onClick={()=>{
                     setmuser(alluser)
                     setslt('chat')

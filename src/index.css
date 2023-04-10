@@ -233,7 +233,7 @@ h5{
 }
 .chats{
   
-  height: 70vh;
+  height: 80vh;
   padding: 10px 5px;
   overflow: auto;
 }
@@ -347,9 +347,12 @@ button svg:hover{
   width: 100%;
    display: flex;
    justify-content: center;
+   position: absolute;
+   top: 50vh;
+   background-color: white;
 }
 .displayimg img{
-  width: 150px;
+  height: 200px;
 }
 form label svg{
   font-size: 38px;
@@ -396,7 +399,7 @@ button:focus {outline:0;}
   }
   .chats{
   
-    height: 74vh;
+    height: 85vh;
     
   }
   .textimg{
@@ -406,7 +409,8 @@ button:focus {outline:0;}
     
   }
   .displayimg img{
-    width: 100px;
+    height: 40px!important;
+    object-fit: contain;
   }
   .usern a{
     font-size: 10px!important;

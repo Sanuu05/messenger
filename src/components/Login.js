@@ -5,7 +5,7 @@ import {app} from '../firebase'
 import {getAuth,signInWithEmailAndPassword} from 'firebase/auth'
 import { loguser } from '../action/user'
 import M from 'materialize-css'
-
+import logo from './img/logo.png'
 
 function Login() {
     const[data, setdata] = useState({
@@ -76,8 +76,8 @@ function Login() {
         
         <div className="mycard">
             <div className="card auth_card ">
-            <img src="https://www.aurigait.com/resources/files/2017/01/256-256-c8b6cbadb620f8b3f588bf53464c8ab9.png" alt="pic" style={{
-                        width:"150px"
+            <img src={logo} alt="pic" style={{
+                        width:"100px",marginBottom:'50px'
                     }} />
               
                 <input

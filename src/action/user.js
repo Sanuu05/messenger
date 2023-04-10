@@ -6,10 +6,10 @@ export const loadUser = () => async (dispatch, getState) => {
     try {
         dispatch({ type: USER_LOADING });
         const token = getState().user.token;
-        const { data } = await Axios.get("https://messengerm.herokuapp.com/user/getuser", { headers: { "x-auth-token": token } })
+        const { data } = await Axios.get("https://msg-snya.onrender.com/user/getuser", { headers: { "x-auth-token": token } })
         // console.log('tok', data)
         dispatch({ type: USER_LOADED, payload: data })
-        // "https://messengerm.herokuapp.com"
+        // "https://msg-snya.onrender.com"
 
 
     } catch (error) {
@@ -23,7 +23,7 @@ export const online = () =>async(dispatch,getState)=>{
         console.log('online send')
         // alert('online')
         const token = getState().user.token;
-        const { data } = await Axios.patch("https://messengerm.herokuapp.com/user/online", "hello",{ headers: { "x-auth-token": token } })
+        const { data } = await Axios.patch("https://msg-snya.onrender.com/user/online", "hello",{ headers: { "x-auth-token": token } })
         
     } catch (error) {
         
@@ -36,7 +36,7 @@ export const offline = () =>async(dispatch,getState)=>{
         console.log('online send')
         alert('offline')
         const token = getState().user.token;
-        const { data } = await Axios.patch("https://messengerm.herokuapp.com/user/offline", "hello",{ headers: { "x-auth-token": token } })
+        const { data } = await Axios.patch("https://msg-snya.onrender.com/user/offline", "hello",{ headers: { "x-auth-token": token } })
         
     } catch (error) {
         
@@ -49,7 +49,7 @@ export const loadmsg = (userid) => async (dispatch, getState) => {
         // console.log('idd',userid)
         const token = getState().user.token;
         // console.log('tok',userid)
-        const data  = await Axios.get(`https://messengerm.herokuapp.com/user/oneuser/${userid}`, { headers: { "x-auth-token": token } })
+        const data  = await Axios.get(`https://msg-snya.onrender.com/user/oneuser/${userid}`, { headers: { "x-auth-token": token } })
         // console.log('tok', data)
         console.log("daa",data)
         // console.log(data)
@@ -67,7 +67,7 @@ export const sendmsg = (msgres, userid,data) => async (dispatch, getState) => {
         // dispatch({ type: USER_LOADING });
         console.log({msg:msgres,pic:data,sendid:userid})
         const token = getState().user.token;
-        const dataa  = await Axios.post("https://messengerm.herokuapp.com/user/nmsg",{msg:msgres,pic:data,sendid:userid}, { headers: { "x-auth-token": token } })
+        const dataa  = await Axios.post("https://msg-snya.onrender.com/user/nmsg",{msg:msgres,pic:data,sendid:userid}, { headers: { "x-auth-token": token } })
         // // console.log('tok', data)
         // console.log("daa",data)
         dispatch({ type: "POSTMSG", payload: dataa })
@@ -85,7 +85,7 @@ export const delmsg = (id) => async (dispatch, getState) => {
         // console.log('idd',userid)
         // alert(id)
         const token = getState().user.token;
-        const data  = await Axios.put("https://messengerm.herokuapp.com/user/delmsg",{id:id}, { headers: { "x-auth-token": token } })
+        const data  = await Axios.put("https://msg-snya.onrender.com/user/delmsg",{id:id}, { headers: { "x-auth-token": token } })
         // console.log('tok', data)
         // console.log("daa",data)
         // dispatch({ type: "POSTMSG", payload: data })
@@ -100,7 +100,7 @@ export const delmsg = (id) => async (dispatch, getState) => {
 }
 export const userSign = (signdata) => async (dispatch) => {
     try {
-        const { data } = await Axios.post("https://messengerm.herokuapp.com/user/signup", signdata)
+        const { data } = await Axios.post("https://msg-snya.onrender.com/user/signup", signdata)
         dispatch({ type: REGISTER_SUCCESS, payload: data })
         
     } catch (error) {
@@ -111,7 +111,7 @@ export const userSign = (signdata) => async (dispatch) => {
 }
 export const loguser = (dat) => async (dispatch) => {
     try {
-        const { data } = await Axios.post("https://messengerm.herokuapp.com/user/login", dat)
+        const { data } = await Axios.post("https://msg-snya.onrender.com/user/login", dat)
         dispatch({ type: LOGIN_SUCCESS, payload: data })
     } catch (error) {
 
@@ -122,7 +122,7 @@ export const loguser = (dat) => async (dispatch) => {
 export const editprofilepic = (dat) => async (dispatch,getState) => {
     try {
         const token = getState().user.token;
-        const { data } = await Axios.post("https://messengerm.herokuapp.com/user/editpic", dat,{ headers: { "x-auth-token": token } })
+        const { data } = await Axios.post("https://msg-snya.onrender.com/user/editpic", dat,{ headers: { "x-auth-token": token } })
         // alert(data)
         dispatch({ type: "UPDATE_PIC", payload: data })
         alert("Profile Pic updated sucessfully")
@@ -134,7 +134,7 @@ export const editprofilepic = (dat) => async (dispatch,getState) => {
 }
 export const getalluser = ()=> async(dispatch)=>{
     try {
-        const user = await Axios.get("https://messengerm.herokuapp.com/user/getalluser")
+        const user = await Axios.get("https://msg-snya.onrender.com/user/getalluser")
         dispatch({type: "GETALLUSER", payload: user})
     } catch (error) {
         console.log(error)

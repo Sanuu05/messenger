@@ -5,6 +5,7 @@ import { userSign } from '../action/user'
 import {app} from '../firebase'
 import { getAuth, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, sendEmailVerification, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import M from 'materialize-css'
+import logo from './img/logo.png'
 function SIgnup() {
     const [data, setdata] = useState({
         name:"", email:"", password:"",cpassword:""
@@ -61,7 +62,7 @@ function SIgnup() {
         
         <div className="mycard">
             <div className="card auth_card ">
-            <img src="https://www.aurigait.com/resources/files/2017/01/256-256-c8b6cbadb620f8b3f588bf53464c8ab9.png" alt="pic" style={{
+            <img src={logo} alt="pic" style={{
                         width:"200px"
                     }} />
                 <input
