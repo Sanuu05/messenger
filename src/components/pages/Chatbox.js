@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import { additem, delitem, getallitems } from '../action/item'
-import { delmsg, loadmsg, logout, sendmsg } from '../action/user'
+import { delmsg, loadmsg, logout, sendmsg } from '../../action/user'
 import ScrollToBottom from 'react-scroll-to-bottom'
 import Pusher from 'pusher-js'
 import { NavLink } from 'react-router-dom'
@@ -16,7 +15,6 @@ function Chatbox({ userid }) {
     const [sentmsg, setsentmsg] = useState()
     const profilepic = (e) => {
         setpic(e.target.files[0])
-        console.log('cvcvcv', e.target.files[0])
         const render = new FileReader()
         render.onload = () => {
             if (render.readyState === 2) {
@@ -29,7 +27,6 @@ function Chatbox({ userid }) {
     const user = localStorage.getItem("user")
 
     const muser = JSON.parse(user)
-    console.log("useaaar", muser)
     useEffect(() => {
         const pusher = new Pusher('dd6db006f4dad11b7fe7', {
             cluster: 'ap2'

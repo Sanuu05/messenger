@@ -1,18 +1,14 @@
 import React, { useEffect } from 'react'
-import Navbar from './components/Navbar'
+import Navbar from './components/pages/Navbar'
 import { Switch, Route, useHistory } from 'react-router-dom'
-import Home from './components/Home'
-import Login from './components/Login'
-import SIgnup from './components/SIgnup'
+import Home from './components/pages/Home'
+import Login from './components/Authentication/Login'
+import SIgnup from './components/Authentication/SIgnup'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import { useDispatch } from 'react-redux'
-import { offline, online } from './action/user'
-import { getAuth, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, sendEmailVerification, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 
 function App() {
   const token = localStorage.getItem('tokenmain')
   const history = useHistory()
-  const dispatch = useDispatch()
   useEffect(() => {
     if (!token) {
       history.push('/')
@@ -22,15 +18,7 @@ function App() {
       history.push('/home/l')
     }
   }, [token, history])
-  // const auth= getAuth()
-  // useEffect(() => {
-  //   window.addEventListener("beforeunload", (ev) => {
-  //     ev.preventDefault();
-  //     return ev.returnValue = 'Are you sure you want to close?';
-  //   });
 
-
-  // }, [])
   return (
     <div className="App">
       <Switch>

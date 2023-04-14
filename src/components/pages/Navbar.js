@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import logo from './img/logo.png'
+import logo from '../img/logo.png'
 function Navbar() {
     return (
         <div className="navs">
@@ -13,7 +13,6 @@ function Navbar() {
                     <ul id="nav-mobile white-text text-darken-2" class="right">
                         <li><Link to="/">Login</Link></li>
                         <li><Link to="/signup">Signup</Link></li>
-                        {/* <li><Link to="collapsible.html">JavaScript</Link></li> */}
                     </ul>
                 </div>
             </nav>

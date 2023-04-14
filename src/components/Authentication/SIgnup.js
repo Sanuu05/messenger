@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import {useDispatch, useSelector} from 'react-redux'
-import { userSign } from '../action/user'
-import {app} from '../firebase'
+import { userSign } from '../../action/user'
+import {app} from '../../firebase'
 import { getAuth, signInWithPopup, GoogleAuthProvider, sendPasswordResetEmail, sendEmailVerification, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "firebase/auth";
 import M from 'materialize-css'
-import logo from './img/logo.png'
+import logo from '../img/logo.png'
 function SIgnup() {
     const [data, setdata] = useState({
         name:"", email:"", password:"",cpassword:""

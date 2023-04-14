@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import Chatbox from './Chatbox'
 import Username from './Username'
 import {useDispatch} from 'react-redux'
-import { getallitems } from '../action/item'
+import { getallitems } from '../../action/item'
 import { useParams } from 'react-router-dom'
-import { offline, online } from '../action/user'
+import {  online } from '../../action/user'
 
 function Home() {
     const dispatch = useDispatch()

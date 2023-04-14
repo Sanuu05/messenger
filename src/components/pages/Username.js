@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { editprofilepic, getalluser, logout,loadUser } from '../action/user'
+import { editprofilepic, getalluser, logout,loadUser } from '../../action/user'
 import { NavLink } from 'react-router-dom'
-import logo from './img/logo.png'
+import logo from '../img/logo.png'
 import Pusher from 'pusher-js'
 function Username() {
     const dispatch = useDispatch()
@@ -42,7 +42,6 @@ function Username() {
     const mainuser = useSelector((state => state.user.user.user))
     const alluser = useSelector((state => state.user?.user?.alluser))
     const [muser,setmuser] = useState()
-    // const picsucc = useSelector((state => state.post.updatepic))
     useEffect(() => {
         dispatch(getalluser())
         dispatch(loadUser())
@@ -51,12 +50,7 @@ function Username() {
     }, [dispatch, username,picsucc,sentmsg,alluser?.length])
     const tok = localStorage.getItem("user")
     const token = JSON.parse(tok)
-    // console.log("ll1",token) 
-    
-    // console.log(userdata.concat(grpdata))
-    
     const [slt,setslt] = useState('chat')
-    console.log("uus",user.type)
     const updatepic=()=>{
         if (propic) {
             const data = new FormData()
@@ -69,11 +63,7 @@ function Username() {
             }).then(res =>
                 res.json())
                 .then(data => {
-                    // alert(data.url)
                     dispatch(editprofilepic({profilePic:data.url}))
-                    // dispatch(sendmsg(msgres, userid, data.url))
-                    // setpic('')
-                    // setmsgres('')
                     propic(null)
                 }).catch(err => console.log(err))
         }
